@@ -3,11 +3,6 @@ from tkinter import Tk, Button, filedialog, messagebox
 from audacity import get_label_tracks, save_label_track, get_tracks, init_pipe
 from pathlib import Path
 
-try:
-    init_pipe()
-except EnvironmentError:
-    messagebox.showinfo(message="Ensure Audacity is running and mod-script-pipe is active.")
-
 root = Tk()
 root.title("Audacity Toolbox")
 if sys.platform == 'win32':
@@ -31,4 +26,11 @@ def btn_save_labels():
 
 B = Button(root, text="Save labels...", command=btn_save_labels)
 B.pack()
+
+try:
+    init_pipe()
+except EnvironmentError:
+    messagebox.showinfo(message="Ensure Audacity is running and mod-script-pipe is active.")
+    exit(0)
+
 root.mainloop()
