@@ -1,3 +1,4 @@
+import sys
 from tkinter import Tk, Button, filedialog, messagebox
 from audacity import get_label_tracks, save_label_track, get_tracks, init_pipe
 from pathlib import Path
@@ -9,7 +10,8 @@ except EnvironmentError:
 
 root = Tk()
 root.title("Audacity Toolbox")
-root.attributes('-toolwindow', True)
+if sys.platform == 'win32':
+    root.attributes('-toolwindow', True)
 root.minsize(150, 32)
 # root.overrideredirect(1)
 # root.resizable(0,0)
